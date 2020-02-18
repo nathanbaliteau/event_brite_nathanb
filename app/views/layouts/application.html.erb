@@ -14,26 +14,29 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to "Event Brite", "#", class: "navbar-brand" %>
+      <%= link_to "Event Brite", root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <%= link_to "Accueil", "#", class: "nav-item nav-link" %>
+          <%= link_to "Accueil", root_path, class: "nav-item nav-link" %>
           <%= link_to "Ajouter un événement", "#", class: "nav-item nav-link" %>
         </div>
-        <% if true do %>
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            S'inscrire/Se connecter
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "S'inscrire", "#", class: "dropdown-item" %>
-              <%= link_to "Se connecter", "#", class: "dropdown-item" %>
-            </div>
+        
+        <% if user_signed_in? %>
+          <div class="navbar-nav">
+            <%= link_to "Mon profil", "#", class: "nav-item nav-link" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
           </div>
         <% else %>
+          <div class="navbar-nav">
+            <%= link_to "S'inscrire", new_user_registration_path, class: "nav-item nav-link" %>
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-item nav-link" %>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? %>
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Mon profil
@@ -43,8 +46,19 @@
               <%= link_to "Se déconnecter", "#", class: "dropdown-item" %>
             </div>
           </div>
+        <% else %>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            S'inscrire/Se connecter
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+            </div>
+          </div>
         <% end %>
       </div>
     </nav>
+    <%= yield %>
   </body>
 </html>

@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+
+  <h2 class="container text-center mx-auto" style='margin-top: 6em'>
+    Bienvenue <%= current_user.email %> !
+  </h2>
+
+<% end %>

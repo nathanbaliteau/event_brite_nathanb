@@ -93,4 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.default_url_options = { :host => 'sheltered-beyond-98833.herokuapp.com' }
+
 end
