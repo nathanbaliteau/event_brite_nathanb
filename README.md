@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bienvenue dans ce projet THP Event Brite
 
-Things you may want to cover:
+Mon projet est disponible sur Heroku à cette adresse :
+https://sheltered-beyond-98833.herokuapp.com/
 
-* Ruby version
+Je me suis arrêté après avoir réalisé le 2.2, j'ai optimisé les 
+ressources Devise vu dans la journée et essayé de faire ça le plus 
+proprement possible avant de continuer le projet.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Bonne correction !
