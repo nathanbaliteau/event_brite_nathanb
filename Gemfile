@@ -39,7 +39,7 @@ gem 'table_print'
 gem 'faker'
 gem 'better_errors'
 gem 'letter_opener'
-gem 'dotenv'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
