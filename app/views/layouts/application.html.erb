@@ -6,14 +6,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <title>Event Brite</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <%= link_to "Event Brite", root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,34 +25,21 @@
           <%= link_to "Accueil", root_path, class: "nav-item nav-link" %>
           <%= link_to "Ajouter un événement", "#", class: "nav-item nav-link" %>
         </div>
-        
-        <% if user_signed_in? %>
-          <div class="navbar-nav">
-            <%= link_to "Mon profil", "#", class: "nav-item nav-link" %>
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-          </div>
-        <% else %>
-          <div class="navbar-nav">
-            <%= link_to "S'inscrire", new_user_registration_path, class: "nav-item nav-link" %>
-            <%= link_to "Se connecter", new_user_session_path, class: "nav-item nav-link" %>
-          </div>
-        <% end %>
-
         <% if user_signed_in? %>
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mon profil
-            </a>
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Mon Profil
+            </button>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Mon profil", "#", class: "dropdown-item" %>
-              <%= link_to "Se déconnecter", "#", class: "dropdown-item" %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
             </div>
           </div>
         <% else %>
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             S'inscrire/Se connecter
-            </a>
+            </button>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>

@@ -1,7 +1,31 @@
-<% if user_signed_in? %>
+<div class="jumbotron">
+  <div class="container">
+    <% if user_signed_in? %>
+      <h1 class="display-4">Bienvenue <%= current_user.email %> </h1>
+      <p> Jette un oeil aux événements près de chez toi, inscris-toi, ou crée un nouvel événement en cliquant ici :</p>
+      <%= link_to "Créer un nouvel événement", new_event_path, class: "btn btn-primary btn-lg btn-sm" %>
+    <% else %>
+      <h1 class="display-4">Bienvenue sur ce site de type Event Brite !</h1>
+      <p> Tu vas bientôt pouvoir regarder les événements près de chez toi, t'y inscrire et même créer de nouveaux événements. Crée vite un compte :</p>
+      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      <% end %>
+  </div>
+</div>
 
-  <h2 class="container text-center mx-auto" style='margin-top: 6em'>
-    Bienvenue <%= current_user.email %> !
-  </h2>
-
-<% end %>
+<div class="container">
+  <div class="card-deck mb-3 d-flex justify-content-between">
+    <% @events.sort_by(&:start_date).each do |event| %>
+      <div class="col-md-4 mt-4">
+        <div class="card d-flex justify-content-center">
+          <div class="card-body">
+            <h2><%= event.title %></h2>
+            <p><%= event.description %></p>
+            <p style="font-style: italic"><%= event.start_date.strftime("%d/%m/%Y") %></p>
+            <p><%= link_to "Voir plus", "#", class: "btn btn-secondary btn-sm" %></p>
+            <p class="text-right"><small>Créé par : <%= event.admin.first_name %></small></p> 
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
