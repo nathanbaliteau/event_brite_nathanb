@@ -21,7 +21,7 @@
             <h2><%= event.title %></h2>
             <p><%= event.description %></p>
             <p style="font-style: italic"><%= event.start_date.strftime("%d/%m/%Y") %></p>
-            <p><%= link_to "Voir plus", "#", class: "btn btn-secondary btn-sm" %></p>
+            <p><%= link_to "Voir plus", event_path(event.id), class: "btn btn-secondary btn-sm" %></p>
             <p class="text-right"><small>Créé par : <%= event.admin.first_name %></small></p> 
           </div>
         </div>

@@ -21,6 +21,10 @@ class Event < ApplicationRecord
   has_many :customers, through: :attendances, class_name: 'User'
   belongs_to :admin, class_name: 'User'
 
+  def end_date
+    end_date = start_date + duration * 60 
+  end
+
 private
   
   def start_date_cannot_be_in_the_past

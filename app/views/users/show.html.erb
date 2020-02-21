@@ -1,0 +1,20 @@
+<br/>
+<div class="card mx-auto mt-5" style="width: 25rem">
+	<div class="card-header text-white bg-success">
+		<h5 class="my-1 text-center"> <%= @user.first_name %> <%= @user.last_name %> </h5>
+	</div>
+  <div class="card-body">
+    <p class="card-text font-italic"> "<%= @user.description %>" </p>
+    <p class="card-text mt-2">Vos événements publiés :</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @events.sort_by(&:start_date).each do |event| %>
+      <li class="list-group-item">
+        <%= link_to event.title, event_path(event.id) %> 
+      </li>
+    <% end %>
+  </ul>
+  <div class="card-footer">
+    <small><%= link_to "Modifier le profil", edit_user_registration_path %></small>
+  </div>
+</div>
